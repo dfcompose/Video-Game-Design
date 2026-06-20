@@ -4,7 +4,7 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
+	Transition.fade_in(0.5)
 	score_label.text = "Final Score: " + str(GameManager.points)
 	
 	pass # Replace with function body.

@@ -1,19 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://baka6kaoqwwbl"]
+[gd_scene format=3 uid="uid://baka6kaoqwwbl"]
 
-[ext_resource type="Script" path="res://Demo Scene/demo.gd" id="1_pv4b6"]
+[ext_resource type="Script" uid="uid://df67elbguaycx" path="res://Demo Scene/demo.gd" id="1_pv4b6"]
 [ext_resource type="PackedScene" uid="uid://byke8p77i82no" path="res://GameTimer/game_timer.tscn" id="2_jswja"]
 
-[node name="Demo" type="Node2D"]
+[node name="Demo" type="Node2D" unique_id=1996466985]
 script = ExtResource("1_pv4b6")
 
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="Button" parent="." unique_id=932825747]
 offset_left = 371.0
 offset_top = 174.0
 offset_right = 732.0
 offset_bottom = 352.0
 text = "PRESS ME TO WIN"
 
-[node name="GameTimer" parent="." instance=ExtResource("2_jswja")]
+[node name="GameTimer" parent="." unique_id=720465305 instance=ExtResource("2_jswja")]
 instruction_text = "Press the Button!"
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

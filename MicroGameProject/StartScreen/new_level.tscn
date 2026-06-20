@@ -1,10 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://bwc72iuy880ve"]
+[gd_scene format=3 uid="uid://bwc72iuy880ve"]
 
 [ext_resource type="PackedScene" uid="uid://byke8p77i82no" path="res://GameTimer/game_timer.tscn" id="1_gp7v8"]
 
-[node name="new level" type="Node2D"]
+[node name="new level" type="Node2D" unique_id=40293744]
 
-[node name="GameTimer" parent="." instance=ExtResource("1_gp7v8")]
+[node name="GameTimer" parent="." unique_id=1921570547 instance=ExtResource("1_gp7v8")]
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0

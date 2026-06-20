@@ -4,25 +4,7 @@ var health := 4
 var points := 0
 var win_lose = true
 
-@export var scene: String
-@export var fade_out_speed: float = 0.5
-@export var fade_in_speed: float = 0.5
-@export var fade_out_pattern: String = "fade"
-@export var fade_in_pattern: String = "fade"
-@export var fade_out_smoothness = 0.1 # (float, 0, 1)
-@export var fade_in_smoothness = 0.1 # (float, 0, 1)
-@export var fade_out_inverted: bool = false
-@export var fade_in_inverted: bool = false
-@export var color: Color = Color(0, 0, 0)
-@export var timeout: float = 0.0
-@export var clickable: bool = false
-@export var add_to_back: bool = true
 
-@onready var fade_out_options = SceneManager.create_options(fade_out_speed, fade_out_pattern, fade_out_smoothness, fade_out_inverted)
-@onready var fade_in_options = SceneManager.create_options(fade_in_speed, fade_in_pattern, fade_in_smoothness, fade_in_inverted)
-@onready var general_options = SceneManager.create_general_options(color, timeout, clickable, add_to_back)
-
-@onready var games = load("res://game_names.tres")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -35,29 +17,48 @@ func _process(delta):
 
 
 func game_over():
-	
-	SceneManager.change_scene("game_over_screen", fade_out_options, fade_in_options, general_options)
-	
+	Transition.fade_out(0.5)
+	await get_tree().create_timer(0.5).timeout
+	#SceneManager.change_scene("game_over_screen", fade_out_options, fade_in_options, general_options)
+	get_tree().change_scene_to_file("res://GameOver/game_over_screen.tscn")
 	pass
 
 
 func next_game():
+	Transition.fade_out(0.5)
+	await get_tree().create_timer(0.5).timeout
+	assert(len(SceneManager.microgames) > 0, "Must have at least one MicroGame scene in the MicrogameScenes folder")
 	
-	var new_game = games.array[randi_range(0, len(games.array) - 1)]
+	var new_game = SceneManager.microgames[randi_range(0, len(SceneManager.microgames) - 1)]
+	Transition.fade_in(0.5)
 	
-	SceneManager.change_scene(new_game, fade_out_options, fade_in_options, general_options)
+	get_tree().change_scene_to_packed(new_game)
 	
+	await get_tree().create_timer(0.5).timeout
+	
+	
+	#await get_tree().create_timer()
+	
+	
+	
+	
+	#SceneManager.change_scene(new_game, fade_out_options, fade_in_options, general_options)
+	pass
 	
 
 func to_interlude():
-	
-	
-	SceneManager.change_scene("interlude", fade_out_options, fade_in_options, general_options)
+	Transition.fade_out(0.5)
+	await get_tree().create_timer(0.5).timeout
+	get_tree().change_scene_to_file("res://StartScreen/interlude.tscn")
+	pass
+	#SceneManager.change_scene("interlude", fade_out_options, fade_in_options, general_options)
 
 
 func restart():
-	
-	SceneManager.change_scene("start_screen", fade_out_options, fade_in_options, general_options)
+	Transition.fade_out(0.5)
+	await get_tree().create_timer(0.5).timeout
+	#SceneManager.change_scene("start_screen", fade_out_options, fade_in_options, general_options)
 	health = 4
 	points = 0
+	get_tree().change_scene_to_file("res://StartScreen/start_screen.tscn")
 	

@@ -20,9 +20,10 @@ var state_change = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	get_tree().paused = true
 	var anim = animation_player.get_animation("countdown")
 	anim.track_set_key_value(0, 3, instruction_text)
-	get_tree().paused = true
+	#get_tree().paused = true
 	
 	pass # Replace with function body.
 
@@ -62,7 +63,7 @@ func win():
 
 
 func lose():
-	
+	get_tree().paused = true
 	GameManager.health -= 1
 	GameManager.win_lose = false
 	if GameManager.health <= 0:

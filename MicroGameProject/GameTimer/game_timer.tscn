@@ -1,6 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://byke8p77i82no"]
+[gd_scene format=3 uid="uid://byke8p77i82no"]
 
-[ext_resource type="Script" path="res://GameTimer/GameTimer.gd" id="1_uj3wf"]
+[ext_resource type="Script" uid="uid://cf1xc8ll707i2" path="res://GameTimer/GameTimer.gd" id="1_uj3wf"]
 [ext_resource type="LabelSettings" uid="uid://dfv5vsekub1k1" path="res://MiscAssets/jersey.tres" id="2_ex0iv"]
 [ext_resource type="AudioStream" uid="uid://cssadpe5gtteg" path="res://MiscAssets/321-go.wav" id="3_v2prv"]
 
@@ -60,11 +60,10 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yvbqs"]
 _data = {
-"countdown": SubResource("Animation_vj4gt")
+&"countdown": SubResource("Animation_vj4gt")
 }
 
-[node name="GameTimer" type="Control"]
-process_mode = 3
+[node name="GameTimer" type="Control" unique_id=2077027657]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -74,25 +73,24 @@ grow_vertical = 2
 script = ExtResource("1_uj3wf")
 metadata/_edit_use_anchors_ = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_yvbqs")
-}
-autoplay = "countdown"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2046790374]
+process_mode = 3
+libraries/ = SubResource("AnimationLibrary_yvbqs")
+autoplay = &"countdown"
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=925482669]
 stream = ExtResource("3_v2prv")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=177645463]
 
-[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer"]
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer" unique_id=1069686264]
 offset_top = 609.0
 offset_right = 1149.0
 offset_bottom = 636.0
 value = 100.0
 show_percentage = false
 
-[node name="Countdown" type="Label" parent="CanvasLayer"]
+[node name="Countdown" type="Label" parent="CanvasLayer" unique_id=831912214]
 visible = false
 anchors_preset = 8
 anchor_left = 0.5
